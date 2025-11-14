@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prevención de Adicciones y Violencia</title>
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-database-compat.js"></script>
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyAFad26tUs7gNpSMxisLNkXAx4qve--bV4",
+      authDomain: "prevencion-viva.firebaseapp.com",
+      databaseURL: "https://prevencion-viva-default-rtdb.firebaseio.com",
+      projectId: "prevencion-viva",
+      storageBucket: "prevencion-viva.appspot.com",
+      messagingSenderId: "1072944773806",
+      appId: "1:1072944773806:web:7fdb2acaf9a262d8fc4b3f"
+    };
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.database();
+
+    const visitasRef = db.ref("estadisticas/visitas");
+    const likesRef = db.ref("estadisticas/likes");
+
+    visitasRef.transaction(current => (current || 0) + 1);
+
+    visitasRef.on("value", snapshot => {
+      document.getElementById("visitas").textContent = snapshot.val();
+    });
+
+    likesRef.on("value", snapshot => {
+      document.getElementById("likes").textContent = snapshot.val();
+    });
+
+    function incrementarLikes() {
+      likesRef.transaction(current => (current || 0) + 1);
+    }
+  </script>
+</head>
+<body>
+  <header>
+    <h1>Prevención de Adicciones y Violencia</h1>
+    <nav>
+      <ul>
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#prevencion">Prevención</a></li>
+        <li><a href="#causas">Causas</a></li>
+        <li><a href="#ayuda">Cómo Ayudar</a></li>
+        <li><a href="#consecuencias">Consecuencias</a></li>
+        <li><a href="#contactos">Contactos</a></li>
+        <li><a href="#interaccion">Interacción</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section id="inicio">
+      <h2>¿Por qué este sitio?</h2>
+      <p>Las adicciones y la violencia son problemas sociales que afectan la salud, la seguridad y el bienestar de millones de personas. Este sitio busca informar, prevenir y orientar a quienes enfrentan estas situaciones o desean ayudar.</p>
+    </section>
+
+    <section id="prevencion">
+      <img src="prevencionA1.jpeg" alt="Prevención de adicciones" height="168x" />
+      <img src="prevencionV2.jpeg" alt="Prevención de Violencia" />
+      <h2>Prevención</h2>
+      <ul>
+        <li><strong>Educación emocional:</strong> Enseñar a identificar y regular emociones desde la infancia.</li>
+        <li><strong>Fortalecimiento familiar:</strong> Promover vínculos afectivos, comunicación abierta y límites claros.</li>
+        <li><strong>Actividades saludables:</strong> Deporte, arte, lectura y participación comunitaria.</li>
+        <li><strong>Información clara:</strong> Hablar abiertamente sobre los riesgos del consumo y la violencia.</li>
+        <li><strong>Reducción de daños:</strong> Enfoque que prioriza la salud y los derechos humanos.</li>
+      </ul>
+    </section>
+
+    <section id="causas">
+        <img src="CausasA1.jpeg" alt="Causas adicciones" />
+      <img src="CausasV2.webp" alt="Causas  Violencia" height="186px" />
+       <h2>Causas comunes</h2>
+      <ul>
+        <li><strong>Entornos violentos:</strong> Familias disfuncionales, abuso físico o emocional.</li>
+        <li><strong>Presión social:</strong> Influencia de amistades o grupos que normalizan el consumo.</li>
+        <li><strong>Falta de oportunidades:</strong> Desempleo, pobreza, exclusión escolar.</li>
+        <li><strong>Trastornos mentales:</strong> Ansiedad, depresión, trauma no tratado.</li>
+        <li><strong>Acceso fácil a sustancias:</strong> Venta ilegal o consumo normalizado en el entorno.</li>
+      </ul>
+    </section>
+
+    <section id="ayuda">
+        <img src="AyudaA1.jpeg" alt="Ayuda adicciones" />
+      <img src="AyudaV2.jpeg" alt="Ayuda Violencia" />
+     <h2>¿Cómo podemos ayudar?</h2>
+      <ul>
+        <li><strong>Escuchar sin juzgar:</strong> La empatía es clave para que la persona se sienta segura.</li>
+        <li><strong>Evitar confrontaciones:</strong> El rechazo puede empeorar la situación.</li>
+        <li><strong>Buscar ayuda profesional:</strong> Psicólogos, terapeutas y centros especializados.</li>
+        <li><strong>Acompañar emocionalmente:</strong> Estar presente sin presionar ni abandonar.</li>
+        <li><strong>Informarse:</strong> Entender que la adicción es una enfermedad crónica.</li>
+      </ul>
+    </section>
+
+    <section id="consecuencias">
+        <img src="ConsecuenciasA1.jpeg" alt="Consecuencias las adicciones" width="50px" height="190px" />
+      <img src="ConsecuenciasV2.jpg" alt="Consecuencias de la Violencia" />
+       <h2>Consecuencias</h2>
+      <ul>
+        <li><strong>Salud física y mental:</strong> Daño neurológico, trastornos psiquiátricos, riesgo de suicidio.</li>
+        <li><strong>Relaciones familiares:</strong> Rupturas, violencia intrafamiliar, aislamiento.</li>
+        <li><strong>Violencia juvenil:</strong> Aumento de agresiones entre jóvenes por consumo y falta de límites.</li>
+        <li><strong>Problemas legales:</strong> Delitos, encarcelamiento, pérdida de oportunidades.</li>
+        <li><strong>Ciclo de violencia:</strong> Adicción y violencia se retroalimentan en entornos vulnerables.</li>
+      </ul>
+    </section>
+
+    <section id="contactos">
+      <h2>Contactos de ayuda</h2>
+      <ul>
+        <li><strong>Línea de la Vida:</strong> 800 911 2000 – Atención emocional 24/7.</li>
+        <li><strong>Centro de Atención Ciudadana:</strong> Asesoría gratuita y confidencial.</li>
+        <li><strong>Consejo Ciudadano CDMX:</strong> Apoyo psicológico y jurídico – 555 533 5533.</li>
+        <li><strong>Ayuda Psicológica en Línea:</strong> Directorio nacional por estado.</li>
+        <li><strong>Ama La Vida:</strong> Intervención en crisis y orientación legal.</li>
+      </ul>
+    </section>
+
+    <section id="interaccion">
+      <h2>Interacción en tiempo real</h2>
+      <div class="stats">
+        <p>👁️ Visitas: <span id="visitas">0</span></p>
+        <p>❤️ Me gusta: <span id="likes">0</span></p>
+        <button onclick="incrementarLikes()">Me gusta</button>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Prevención  de Adicciones y Violencia. Todos los derechos reservados Dzz.</p>
+  </footer>
+</body>
+</html>
